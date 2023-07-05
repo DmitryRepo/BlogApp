@@ -1,6 +1,6 @@
 import React from 'react';
 import { PostHeader } from '../PostHeader/PostHeader';
-import { Paragraph } from '../../typography/Paragraph/paragraph';
+import { Paragraph } from '../../typography/Paragraph/Paragraph';
 import { PostPreviewStyles, StyledPostPreview } from './post-preview.styles';
 import { PostType } from '../../types/post';
 

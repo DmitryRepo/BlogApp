@@ -8,6 +8,7 @@ import {
 import { useEffect, useState } from 'react';
 import { PostType } from '../../types/post';
 import { getArticle } from './articles';
+import { selectToken } from '../../store/slices/user-slice';
 
 export const useArticlesGetter = () => {
   const dispatch = useAppDispatch();
@@ -15,11 +16,12 @@ export const useArticlesGetter = () => {
   const posts = useAppSelector(selectArticles);
   const activePage = useAppSelector(selectActivePage);
   const pageSize = useAppSelector(selectPageSize);
+  const token = useAppSelector(selectToken);
 
   useEffect(() => {
     const offset = pageSize * (activePage - 1);
 
-    dispatch(getArticlesByOffset({ limit: pageSize, offset }));
+    dispatch(getArticlesByOffset({ limit: pageSize, offset, token }));
   }, [activePage, pageSize]);
 
   return posts;
@@ -27,9 +29,10 @@ export const useArticlesGetter = () => {
 
 export const useArticle = (slug: string) => {
   const [post, setPost] = useState<PostType | null>(null);
+  const token = useAppSelector(selectToken);
 
   useEffect(() => {
-    getArticle(slug).then(({ article }) => setPost(article));
+    getArticle(slug, token).then(({ article }) => setPost(article));
   }, [slug]);
 
   return post;

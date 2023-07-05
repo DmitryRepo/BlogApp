@@ -18,13 +18,12 @@ const initialState: ArticlesState = {
   articlesCount: 0,
 };
 
-export const getArticlesByOffset = createAsyncThunk(
-  'articles/getArticlesByPage',
-  async ({ limit, offset }: { limit: number; offset: number }): Promise<PostsResponse> => {
-    const response = await getArticles(limit, offset);
-    return response;
-  }
-);
+type GetArticleByOffset = (props: { limit: number; offset: number; token?: string }) => Promise<PostsResponse>;
+const getArticlesByOffsetCb: GetArticleByOffset = async ({ limit, offset, token }) => {
+  return await getArticles(limit, offset, token);
+};
+
+export const getArticlesByOffset = createAsyncThunk('articles/getArticlesByPage', getArticlesByOffsetCb);
 
 export const articlesSlice = createSlice({
   name: 'articles',
@@ -32,6 +31,10 @@ export const articlesSlice = createSlice({
   reducers: {
     setActivePage: (state, action: PayloadAction<number>) => {
       state.activePage = action.payload;
+    },
+    replaceArticle: (state, action: PayloadAction<PostType>) => {
+      const newPost = action.payload;
+      state.posts = state.posts.map((post) => (post.slug === newPost.slug ? newPost : post));
     },
   },
   extraReducers: (builder) => {
@@ -42,7 +45,7 @@ export const articlesSlice = createSlice({
   },
 });
 
-export const { setActivePage } = articlesSlice.actions;
+export const { setActivePage, replaceArticle } = articlesSlice.actions;
 
 export const selectArticles = (state: RootState) => state.articles.posts;
 export const selectActivePage = (state: RootState) => state.articles.activePage;

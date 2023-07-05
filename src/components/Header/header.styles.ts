@@ -15,4 +15,10 @@ export const StyledHeader = styled.header<HeaderStyles>`
     align-items: center;
     gap: 20px;
   }
+
+  .auth-btns {
+    display: flex;
+    gap: 25px;
+    align-items: center;
+  }
 `;

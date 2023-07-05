@@ -19,5 +19,6 @@ declare module 'styled-components' {
     warning: color;
     normal: color;
     baseBg: color;
+    lightText: color;
   }
 }

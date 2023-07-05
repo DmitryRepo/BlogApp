@@ -1,11 +1,11 @@
 export type PostAuthorType = {
   username: string;
-  image: string;
-  following: boolean;
+  image?: string;
+  following?: boolean;
 };
 
 export type PostType = {
-  slug?: string;
+  slug: string;
   title: string;
   description: string;
   body: string;

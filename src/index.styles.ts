@@ -15,6 +15,7 @@ export const defaultTheme: DefaultTheme = {
   warning: '#FAAD14',
   normal: '#D9D9D9',
   baseBg: '#FFFFFF',
+  lightText: '#8C8C8C',
 };
 
 export const GlobalStyles = createGlobalStyle`
