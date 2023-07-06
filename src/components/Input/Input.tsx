@@ -6,11 +6,13 @@ type Props = {
   error?: Message;
   name: string;
   register: any;
-  label: string;
+  label?: string;
+  placeholder?: string;
+  type?: 'textarea' | 'text' | 'password';
 };
 
 export const Input = (props: Props) => {
-  const { error, name, register, label } = props;
+  const { error, name, register, label, placeholder, type } = props;
   const [errorStr, setErrorStr] = useState<string>('');
 
   useEffect(() => {
@@ -20,8 +22,16 @@ export const Input = (props: Props) => {
   return (
     <StyledInput isError={!!error}>
       <label className={'input-label'}>
-        <span className={'input-label__content'}>{label}</span>
-        <input className={'input'} placeholder={label} {...register(name)} />
+        {label && <span className={'input-label__content'}>{label}</span>}
+        {type !== 'textarea' ? (
+          <input className={'input'} placeholder={placeholder || label || null} {...register(name)} />
+        ) : (
+          <textarea
+            className={'input textarea'}
+            placeholder={placeholder || label || null}
+            {...register(name)}
+          ></textarea>
+        )}
       </label>
       {<span className={'input-error'}>{errorStr}</span>}
     </StyledInput>

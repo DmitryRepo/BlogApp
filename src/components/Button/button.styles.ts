@@ -3,6 +3,9 @@ import styled, { css } from 'styled-components';
 export type ButtonStyles = {
   success?: boolean;
   bordered?: boolean;
+  small?: boolean;
+  error?: boolean;
+  primary?: boolean;
 };
 
 export const StyledButton = styled.button<ButtonStyles>`
@@ -37,6 +40,38 @@ export const StyledButton = styled.button<ButtonStyles>`
       &:hover {
         color: ${({ theme }) => theme.baseBg};
         background: ${({ theme }) => theme.text};
+      }
+    `}
+
+  ${({ small }) =>
+    small &&
+    css`
+      font-size: 14px;
+      line-height: 22px;
+      padding: 6px 10px;
+    `}
+
+  ${({ error }) =>
+    error &&
+    css`
+      color: ${({ theme }) => theme.error};
+      border-color: ${({ theme }) => theme.error};
+
+      &:hover {
+        background: ${({ theme }) => theme.error};
+        color: ${({ theme }) => theme.baseBg};
+      }
+    `}
+
+  ${({ primary }) =>
+    primary &&
+    css`
+      color: ${({ theme }) => theme.primary};
+      border-color: ${({ theme }) => theme.primary};
+
+      &:hover {
+        background: ${({ theme }) => theme.primary};
+        color: ${({ theme }) => theme.baseBg};
       }
     `}
 `;

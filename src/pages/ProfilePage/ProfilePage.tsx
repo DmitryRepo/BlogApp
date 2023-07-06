@@ -4,6 +4,8 @@ import { FieldType, LoginForm } from '../../components/LoginForm/LoginForm'
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { selectToken, selectUserData, setUserData } from '../../store/slices/user-slice';
 import { updateUser } from '../../services/account/account';
+import { Alert } from 'antd';
+import { StyledProfilePage } from './profile-page.styles';
 
 const formSchema = yup.object().shape({
   username: yup.string().required('Username is required').min(3, 'Username length should be at least 3 characters'),
@@ -44,6 +46,7 @@ export const ProfilePage = () => {
   const token = useAppSelector(selectToken);
 
   const [errors, setErrors] = useState({});
+  const [showSuccess, setShowSuccess] = useState<boolean>(false);
 
   const onSubmit = async (data: FormValues) => {
     if (token) {
@@ -61,12 +64,18 @@ export const ProfilePage = () => {
         setErrors(response.data.errors);
       } else {
         dispatch(setUserData(response.data.user));
+
+        setShowSuccess(true);
+
+        setTimeout(() => {
+          setShowSuccess(false);
+        }, 3000);
       }
     }
   };
 
   return (
-    <div>
+    <StyledProfilePage>
       <LoginForm
         mode={'onSubmit'}
         submitHandler={onSubmit}
@@ -80,6 +89,11 @@ export const ProfilePage = () => {
         }}
         errors={errors}
       />
-    </div>
+      {showSuccess && (
+        <div className={'success-message'}>
+          <Alert message="Success" description={'Data updated successful'} type="success" showIcon />
+        </div>
+      )}
+    </StyledProfilePage>
   );
 };

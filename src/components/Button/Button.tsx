@@ -3,7 +3,7 @@ import { ButtonStyles, StyledButton } from './button.styles';
 
 type Props = ButtonStyles & {
   children: ReactElement | string;
-  onClick?: () => void;
+  onClick?: any;
 };
 
 export const Button = (props: Props) => {

@@ -20,6 +20,7 @@ export const Header = () => {
       <Logo />
       {isAuth ? (
         <div className={'auth-btns'}>
+          <LinkButton to={'/new-article'} label={'Create article'} small success />
           <Profile author={{ username, image: avatar }} to={'/profile'} />
           <Button onClick={onLogout} bordered>
             Log out
@@ -27,8 +28,8 @@ export const Header = () => {
         </div>
       ) : (
         <div className="btns">
-          <LinkButton to={'sign-in-page'} label={'Sign in'} />
-          <LinkButton to={'sign-up-page'} label={'Sign up'} success />
+          <LinkButton to={'/sign-in'} label={'Sign in'} />
+          <LinkButton to={'/sign-up'} label={'Sign up'} success />
         </div>
       )}
     </StyledHeader>

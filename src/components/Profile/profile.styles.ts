@@ -3,9 +3,19 @@ import styled from 'styled-components';
 export type ProfileStyles = object;
 
 export const StyledProfile = styled.div<ProfileStyles>`
-  display: flex;
-  align-items: center;
-  gap: 12px;
+  .wrapper {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  a {
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
 `;
 
 export const StyledProfileInfo = styled.div<ProfileStyles>`
@@ -31,6 +41,7 @@ export const StyledProfileImage = styled.div<ProfileStyles>`
   height: 46px;
   border-radius: 50%;
   overflow: hidden;
+  background: ${({ theme }) => theme.text};
 
   img {
     width: 100%;

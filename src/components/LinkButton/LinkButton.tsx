@@ -1,9 +1,9 @@
-import React from 'react';
 
-import { LinkButtonStyles, StyledLinkButton } from './linkButton.styles';
 import { Link } from 'react-router-dom';
+import { Button } from '../Button/Button';
+import { ButtonStyles } from '../Button/button.styles';
 
-type Props = LinkButtonStyles & {
+type Props = ButtonStyles & {
   to: string;
   label: string;
 };
@@ -13,7 +13,7 @@ export const LinkButton = (props: Props) => {
 
   return (
     <Link to={to} style={{ textDecoration: 'none' }}>
-      <StyledLinkButton {...otherProps}>{label}</StyledLinkButton>
+      <Button {...otherProps}>{label}</Button>
     </Link>
   );
 };
