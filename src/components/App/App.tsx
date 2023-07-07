@@ -26,7 +26,7 @@ export const App = () => {
           <Route
             path={'articles/:id/edit'}
             element={
-              <ProtectedRoute isAllowed={isAuth} redirectPath={'/'}>
+              <ProtectedRoute isAllowed={isAuth} redirectPath={'/sign-in'}>
                 <EditArticlePage />
               </ProtectedRoute>
             }
@@ -34,7 +34,7 @@ export const App = () => {
           <Route
             path={'new-article'}
             element={
-              <ProtectedRoute isAllowed={isAuth} redirectPath={'/'}>
+              <ProtectedRoute isAllowed={isAuth} redirectPath={'/sign-in'}>
                 <CreateArticlePage />
               </ProtectedRoute>
             }
@@ -42,13 +42,13 @@ export const App = () => {
           <Route
             path={'profile'}
             element={
-              <ProtectedRoute isAllowed={isAuth} redirectPath={'/'}>
+              <ProtectedRoute isAllowed={isAuth} redirectPath={'/sign-in'}>
                 <ProfilePage />
               </ProtectedRoute>
             }
           />
           <Route
-            path={'sign-in-page'}
+            path={'sign-in'}
             element={
               <ProtectedRoute isAllowed={!isAuth} redirectPath={'/'}>
                 <SignInPage />
@@ -56,7 +56,7 @@ export const App = () => {
             }
           />
           <Route
-            path={'sign-up-page'}
+            path={'sign-up'}
             element={
               <ProtectedRoute isAllowed={!isAuth} redirectPath={'/'}>
                 <SignUpPage />

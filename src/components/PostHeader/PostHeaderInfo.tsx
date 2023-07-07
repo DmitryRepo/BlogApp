@@ -17,12 +17,13 @@ export const PostHeaderInfo = (props: PostHeaderInfoProps) => {
   return (
     <StyledPostHeaderInfo>
       <div className={'title-wrapper'}>
-        <ArticleTitle level={3} to={slug ? `articles/${slug}` : null}>
+        <ArticleTitle level={3} to={slug ? `/articles/${slug}` : null}>
           {titleContent}
         </ArticleTitle>
-        <Like favorited={favorited} favoritesCount={favoritesCount} />
+        <Like favorited={favorited} favoritesCount={favoritesCount} slug={slug} />
       </div>
       <div className="tag-list">{tags}</div>
     </StyledPostHeaderInfo>
   );
 };
+

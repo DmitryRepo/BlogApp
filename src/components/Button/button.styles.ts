@@ -46,7 +46,6 @@ export const StyledButton = styled.button<ButtonStyles>`
   ${({ small }) =>
     small &&
     css`
-      font-size: 14px;
       line-height: 22px;
       padding: 6px 10px;
     `}

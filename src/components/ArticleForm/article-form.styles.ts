@@ -32,6 +32,7 @@ export const StyledArticleForm = styled.div<ArticleFormStyles>`
     background: ${({ theme }) => theme.primary};
     border-radius: 4px;
     padding: 8px 12px;
+    font-size: 18px;
 
     border: 1px solid ${({ theme }) => theme.primary};
     color: ${({ theme }) => theme.baseBg};
