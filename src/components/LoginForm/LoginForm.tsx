@@ -9,6 +9,7 @@ import { Checkbox } from '../CheckBox/CheckBox';
 export type FieldType = {
   label: string;
   name: string;
+  type: 'textarea' | 'text' | 'email'| 'url',
   value?: string;
 };
 
@@ -62,10 +63,10 @@ export const LoginForm = <T extends FieldValues>(props: Props<T>) => {
     }
   }, [propErrors]);
 
-  const fields = fieldsData.map(({ name, label }, i) => {
+  const fields = fieldsData.map(({ name, label, type }, i) => {
     const error = (errors[name]?.message || '') as string;
 
-    return <Input key={`${name}_${i}`} name={name} register={register} label={label} error={error} />;
+    return <Input key={`${name}_${i}`} name={name} type={type} register={register} label={label} error={error} />;
   });
 
   return (

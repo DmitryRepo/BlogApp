@@ -34,18 +34,23 @@ const formFields: FieldType[] = [
   {
     label: 'Username',
     name: 'username',
+    type:'text'
   },
   {
     label: 'Email address',
     name: 'email',
+    type:'email',
+
   },
   {
     label: 'Password',
     name: 'password',
+    type:'text',
   },
   {
     label: 'Repeat Password',
     name: 'cpassword',
+    type:'text',
   },
 ];
 
@@ -80,7 +85,7 @@ export const SignUpPage = () => {
         needDataAgree
         helpText={
           <>
-            Already have an account? <Link to={'/sign-in-page'}>Sign In</Link>.
+            Already have an account? <Link to={'/sign-in'}>Sign In</Link>.
           </>
         }
         errors={errors}

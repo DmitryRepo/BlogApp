@@ -24,6 +24,7 @@ export const ArticleFormTags = (props: Props) => {
       <div className={'tag-wrapper'} key={field.id}>
         <Input
           placeholder={'Tag'}
+          type='text'
           register={register}
           name={`tags.${i}.name`}
           error={errors?.tags?.[i]?.name?.message as string}

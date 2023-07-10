@@ -12,6 +12,7 @@ import { EditArticlePage } from '../../pages/EditArticlePage/EditArticlePage';
 import { ProtectedRoute } from '../ProtectedRoute/ProtectedRoute';
 import { useAppSelector } from '../../store/hooks';
 import { selectIsAuth } from '../../store/slices/user-slice';
+import { pathes } from '../../consts/consts'
 
 export const App = () => {
   const isAuth = useAppSelector(selectIsAuth);
@@ -19,12 +20,12 @@ export const App = () => {
   return (
     <>
       <Routes>
-        <Route path={'/'} element={<Layout />}>
+        <Route path={pathes.HOME} element={<Layout />}>
           <Route index element={<ArticlesPage />}></Route>
-          <Route path={'articles/'} element={<ArticlesPage />}></Route>
-          <Route path={'articles/:id'} element={<Article />}></Route>
+          <Route path={pathes.ARTICLES} element={<ArticlesPage />}></Route>
+          <Route path={pathes.ARTICLE} element={<Article />}></Route>
           <Route
-            path={'articles/:id/edit'}
+            path={pathes.ARTICLE_EDIT}
             element={
               <ProtectedRoute isAllowed={isAuth} redirectPath={'/sign-in'}>
                 <EditArticlePage />
@@ -32,7 +33,7 @@ export const App = () => {
             }
           />
           <Route
-            path={'new-article'}
+            path={pathes.NEW_ARTICLE}
             element={
               <ProtectedRoute isAllowed={isAuth} redirectPath={'/sign-in'}>
                 <CreateArticlePage />
@@ -40,7 +41,7 @@ export const App = () => {
             }
           />
           <Route
-            path={'profile'}
+            path={pathes.PROFILE}
             element={
               <ProtectedRoute isAllowed={isAuth} redirectPath={'/sign-in'}>
                 <ProfilePage />
@@ -48,17 +49,17 @@ export const App = () => {
             }
           />
           <Route
-            path={'sign-in'}
+            path={pathes.SIGN_IN}
             element={
-              <ProtectedRoute isAllowed={!isAuth} redirectPath={'/'}>
+              <ProtectedRoute isAllowed={!isAuth} redirectPath='/'>
                 <SignInPage />
               </ProtectedRoute>
             }
           />
           <Route
-            path={'sign-up'}
+            path={pathes.SIGN_UP}
             element={
-              <ProtectedRoute isAllowed={!isAuth} redirectPath={'/'}>
+              <ProtectedRoute isAllowed={!isAuth} redirectPath='/'>
                 <SignUpPage />
               </ProtectedRoute>
             }

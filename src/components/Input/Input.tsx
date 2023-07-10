@@ -8,7 +8,7 @@ type Props = {
   register: any;
   label?: string;
   placeholder?: string;
-  type?: 'textarea' | 'text' | 'password';
+  type?: 'textarea' | 'text' | 'password'| 'email'| 'url';
 };
 
 export const Input = (props: Props) => {
@@ -18,16 +18,16 @@ export const Input = (props: Props) => {
   useEffect(() => {
     setErrorStr(error || '');
   }, [error]);
-
   return (
     <StyledInput isError={!!error}>
       <label className={'input-label'}>
         {label && <span className={'input-label__content'}>{label}</span>}
         {type !== 'textarea' ? (
-          <input className={'input'} placeholder={placeholder || label || null} {...register(name)} />
+          <input className={'input'} type={type} placeholder={placeholder || label || null} {...register(name)} />
         ) : (
           <textarea
             className={'input textarea'}
+            type={type}
             placeholder={placeholder || label || null}
             {...register(name)}
           ></textarea>

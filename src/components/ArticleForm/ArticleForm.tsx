@@ -54,12 +54,14 @@ export const ArticleForm = (props: Props) => {
       <form onSubmit={handleSubmit(submitHandler)}>
         <Input
           name={'articleTitle'}
+          type ={'text'}
           register={register}
           label={'Title'}
           error={errors.articleTitle?.message as string}
         />
         <Input
           name={'description'}
+          type ={'text'}
           register={register}
           label={'Short description'}
           error={errors.description?.message as string}

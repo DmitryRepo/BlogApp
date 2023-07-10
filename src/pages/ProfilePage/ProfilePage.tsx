@@ -25,18 +25,22 @@ const formFields: FieldType[] = [
   {
     label: 'Username',
     name: 'username',
+    type:'text',
   },
   {
     label: 'Email address',
     name: 'email',
+    type:'email',
   },
   {
     label: 'New Password',
     name: 'newPassword',
+    type:'text',
   },
   {
     label: 'Avatar image (url)',
     name: 'avatar',
+    type:'url',
   },
 ];
 
